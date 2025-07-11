@@ -7,11 +7,8 @@ namespace DispatchOrderSystem.Domain.Aggregates.Entities
         public Guid Id { get; set; } = Guid.NewGuid();
 
         public Guid ClientId { get; set; }
-        public Client Client { get; set; } = default!;
 
         public Guid ProductId { get; set; }
-        public Product Product { get; set; } = default!;
-
 
         public int Quantity { get; set; }
 
@@ -22,5 +19,9 @@ namespace DispatchOrderSystem.Domain.Aggregates.Entities
         public decimal Cost { get; set; }
 
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+
+        // Relations
+        public Client Client { get; set; } = default!;
+        public Product Product { get; set; } = default!;
     }
 }
