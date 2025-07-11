@@ -1,8 +1,12 @@
-using DispatchOrderSystem.Infrastructure.Data;
-using DispatchOrderSystem.Infrastructure.DependencyInjection;
-using System.Reflection;
-using MediatR;
+using DispatchOrderSystem.Api.Middlewares;
 using DispatchOrderSystem.Application;
+using DispatchOrderSystem.Application.Validators;
+using DispatchOrderSystem.Infrastructure.DependencyInjection;
+using FluentValidation;
+using FluentValidation.AspNetCore;
+using Microsoft.AspNetCore.Mvc;
+using Serilog;
+using System.Reflection;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -16,6 +20,25 @@ builder.Services.AddMediatR(cfg =>
 // Add services to the container.
 builder.Services.AddControllers();
 
+builder.Services.Configure<ApiBehaviorOptions>(options =>
+{
+    options.InvalidModelStateResponseFactory = context =>
+    {
+        var errors = context.ModelState
+            .Where(e => e.Value?.Errors?.Count > 0)
+            .Select(e => new {
+                Field = e.Key,
+                Errors = e.Value?.Errors?.Select(err => err.ErrorMessage)
+            });
+
+        return new BadRequestObjectResult(new
+        {
+            message = "Validation failed.",
+            details = errors
+        });
+    };
+});
+
 // Add services to the Infrastructure (DbContext, repos, services)
 builder.Services.AddInfrastructureServices(builder.Configuration);
 
@@ -28,6 +51,18 @@ builder.Services.AddSwaggerGen(c =>
     c.IncludeXmlComments(xmlPath);
 });
 
+builder.Services.AddValidatorsFromAssemblyContaining<CreateOrderRequestValidator>();
+builder.Services.AddFluentValidationAutoValidation();
+builder.Services.AddFluentValidationClientsideAdapters();
+
+Log.Logger = new LoggerConfiguration()
+    .ReadFrom.Configuration(builder.Configuration)
+    .Enrich.FromLogContext()
+    .WriteTo.Console()
+    .WriteTo.File("Logs/log-.txt", rollingInterval: RollingInterval.Day)
+    .CreateLogger();
+
+builder.Host.UseSerilog();
 
 var app = builder.Build();
 
@@ -41,7 +76,7 @@ if (app.Environment.IsDevelopment())
         options.SwaggerEndpoint("/swagger/v1/swagger.json", "DispatchOrderSystem API V1");
     });
 }
-
+app.UseMiddleware<ExceptionMiddleware>();
 app.UseAuthorization();
 app.MapControllers();
 app.Run();
