@@ -4,7 +4,7 @@ using MediatR;
 
 namespace DispatchOrderSystem.Application.Queries.Orders
 {
-    internal class GetOrderByIdHandler : IRequestHandler<GetOrderByIdQueryRequest, OrderDetailDto?>
+    public class GetOrderByIdHandler : IRequestHandler<GetOrderByIdQueryRequest, OrderDetailDto?>
     {
         private readonly IOrderService _orderService;
 
