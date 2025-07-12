@@ -1,9 +1,11 @@
 using DispatchOrderSystem.Api.Middlewares;
 using DispatchOrderSystem.Application;
+using DispatchOrderSystem.Application.Behaviors;
 using DispatchOrderSystem.Application.Validators;
 using DispatchOrderSystem.Infrastructure.DependencyInjection;
 using FluentValidation;
 using FluentValidation.AspNetCore;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Serilog;
 using System.Reflection;
@@ -51,9 +53,9 @@ builder.Services.AddSwaggerGen(c =>
     c.IncludeXmlComments(xmlPath);
 });
 
+builder.Services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
+
 builder.Services.AddValidatorsFromAssemblyContaining<CreateOrderRequestValidator>();
-builder.Services.AddFluentValidationAutoValidation();
-builder.Services.AddFluentValidationClientsideAdapters();
 
 Log.Logger = new LoggerConfiguration()
     .ReadFrom.Configuration(builder.Configuration)

@@ -1,5 +1,5 @@
 ﻿using DispatchOrderSystem.Application.DTOs;
-using DispatchOrderSystem.Application.Interfaces;
+using DispatchOrderSystem.Application.Services.Interfaces;
 using MediatR;
 
 namespace DispatchOrderSystem.Application.Queries.Orders

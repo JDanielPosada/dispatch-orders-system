@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DispatchOrderSystem.Application.Interfaces
+namespace DispatchOrderSystem.Application.Services.Interfaces
 {
     public interface IOrderService
     {

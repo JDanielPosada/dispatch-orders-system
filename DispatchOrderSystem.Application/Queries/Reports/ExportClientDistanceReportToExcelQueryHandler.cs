@@ -1,4 +1,4 @@
-﻿using DispatchOrderSystem.Application.Interfaces;
+﻿using DispatchOrderSystem.Application.Services.Interfaces;
 using MediatR;
 using System;
 using System.Collections.Generic;

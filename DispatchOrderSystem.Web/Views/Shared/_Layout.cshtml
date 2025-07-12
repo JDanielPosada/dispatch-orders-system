@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Ordenes de Despacho</title>
+
+    <!-- Estilos -->
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <!-- Toastr CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark shadow-sm" style="background-color: #033e5c;">
+            <div class="container-fluid">
+                <a class="navbar-brand d-flex align-items-center fw-bold text-white" asp-controller="Home" asp-action="Index">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-truck me-2" viewBox="0 0 16 16">
+                        <path d="M0 1a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v2h2.5a.5.5 0 0 1 .5.5V6h-2v1h2v2a2 2 0 0 1-2 2h-.086a2 2 0 1 1-3.828 0H6.914a2 2 0 1 1-3.828 0H2a2 2 0 0 1-2-2V1zm1 1v9a1 1 0 0 0 1 1h.086a2 2 0 1 1 3.828 0h2.172a2 2 0 1 1 3.828 0H13a1 1 0 0 0 1-1v-1h-3V3a1 1 0 0 0-1-1H1zm11 9a1 1 0 1 0 2 0 1 1 0 0 0-2 0zm-8 0a1 1 0 1 0 2 0 1 1 0 0 0-2 0z" />
+                    </svg>
+                    Despachos
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarNav" aria-controls="navbarNav"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item me-2">
+                            <a class="nav-link text-white d-flex align-items-center" asp-controller="Home" asp-action="Index">
+                                <i class="bi bi-house me-1"></i> Inicio
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white d-flex align-items-center" asp-controller="Reports" asp-action="ClientDistance">
+                                <i class="bi bi-bar-chart-line me-1"></i> Reportes
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div id="spinner-overlay" class="spinner-overlay d-none">
+        <div class="spinner-border text-light" role="status"></div>
+    </div>
+    <main class="container py-4">
+        @RenderBody()
+    </main>
+
+    <footer class="text-center text-white py-3 mt-auto" style="background-color: #033e5c;">
+        <small>&copy; 2025 - Prueba técnica Navisaf / Sistema de Despacho</small>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <!-- Toastr JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script>
+        // Mostrar notificaciones si existen
+        @if (TempData["SuccessMessage"] != null)
+        {
+                <text>toastr.success("@TempData["SuccessMessage"]");</text>
+        }
+
+        @if (TempData["ErrorMessage"] != null)
+        {
+                <text>toastr.error("@TempData["ErrorMessage"]");</text>
+        }
+    </script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

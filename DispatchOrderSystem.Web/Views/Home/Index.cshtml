@@ -1,0 +1,65 @@
+﻿@{
+    ViewData["Title"] = "Panel de control";
+}
+
+<div class="text-center">
+    <h2 class="mb-5" style="color: #033e5c;">Gestión de Órdenes de Despacho</h2>
+
+    <div class="row g-4 justify-content-center">
+        <div class="col-md-3">
+            <div class="card shadow-sm border-0 h-100 d-flex flex-column justify-content-between">
+                <div class="card-body text-center d-flex flex-column">
+                    <i class="bi bi-box-arrow-in-right display-4 text-primary mb-3"></i>
+                    <h5 class="card-title">Crear Orden</h5>
+                    <p class="card-text">Registra una nueva orden de despacho.</p>
+                    <a asp-controller="Orders" asp-action="Create" class="btn btn-outline-primary mt-auto"
+                       style="background-color: #033e5c; color: white;">
+                        Ir
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card shadow-sm border-0 h-100 d-flex flex-column justify-content-between">
+                <div class="card-body text-center d-flex flex-column">
+                    <i class="bi bi-bar-chart-line display-4 text-primary mb-3"></i>
+                    <h5 class="card-title">Ver Reporte</h5>
+                    <p class="card-text">Consulta el reporte por cliente y distancia.</p>
+                    <a asp-controller="Reports" asp-action="ClientDistance" class="btn btn-outline-primary mt-auto"
+                       style="background-color: #033e5c; color: white;">
+                        Ir
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card shadow-sm border-0 h-100 d-flex flex-column justify-content-between">
+                <div class="card-body text-center d-flex flex-column">
+                    <i class="bi bi-person-plus display-4 text-primary mb-3"></i>
+                    <h5 class="card-title">Clientes</h5>
+                    <p class="card-text">Gestiona los clientes registrados.</p>
+                    <a asp-controller="Clients" asp-action="Index" class="btn btn-outline-primary mt-auto"
+                       style="background-color: #033e5c; color: white;">
+                        Ir
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card shadow-sm border-0 h-100 d-flex flex-column justify-content-between">
+                <div class="card-body text-center d-flex flex-column">
+                    <i class="bi bi-box-seam display-4 text-primary mb-3"></i>
+                    <h5 class="card-title">Productos</h5>
+                    <p class="card-text">Gestiona los productos del catálogo.</p>
+                    <a asp-controller="Products" asp-action="Index" class="btn btn-outline-primary mt-auto"
+                       style="background-color: #033e5c; color: white;">
+                        Ir
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

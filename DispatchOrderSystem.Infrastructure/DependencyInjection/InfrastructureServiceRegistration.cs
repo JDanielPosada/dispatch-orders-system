@@ -6,6 +6,7 @@ using DispatchOrderSystem.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 using DispatchOrderSystem.Application.Services;
 using DispatchOrderSystem.Domain.Interfaces;
+using DispatchOrderSystem.Application.Services.Interfaces;
 
 
 namespace DispatchOrderSystem.Infrastructure.DependencyInjection
@@ -27,6 +28,8 @@ namespace DispatchOrderSystem.Infrastructure.DependencyInjection
             services.AddScoped<IOrderService, OrderService>();
             services.AddScoped<ISeedService, SeedService>();
             services.AddScoped<IExcelExportService, ExcelExportService>();
+            services.AddScoped<IClientService, ClientService>();
+            services.AddScoped<IProductService, ProductService>();
 
             return services;
         }

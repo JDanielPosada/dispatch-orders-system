@@ -12,7 +12,7 @@
                 Math.Cos(ToRadians(lat1)) * Math.Cos(ToRadians(lat2)) *
                 Math.Pow(Math.Sin(dLon / 2), 2);
 
-            var c = 2 * Math.Asin(Math.Sqrt(a));
+            var c = 2 * Math.Atan2(Math.Sqrt(a), Math.Sqrt(1 - a));
             return R * c; // Distance in kilometers
         }
 
