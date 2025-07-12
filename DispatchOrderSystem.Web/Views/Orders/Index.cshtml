@@ -14,33 +14,47 @@
 }
 <div class="d-flex justify-content-between align-items-center mb-4">
     <h2 style="color: #033e5c;">Órdenes registradas</h2>
-    <a class="btn btn-primary" asp-action="Create" style="background-color: #033e5c; border-color: #033e5c;">
-        + Crear nueva orden
-    </a>
+    <div class="d-flex gap-2">
+        <a href="@Url.Action("Index", "Home")" class="btn btn-outline-secondary">
+            <i class="bi bi-arrow-left-circle me-1"></i> Volver al inicio
+        </a>
+        <a class="btn btn-primary" asp-action="Create" style="background-color: #033e5c; border-color: #033e5c;">
+            + Crear nueva orden
+        </a>
+    </div>
 </div>
 
-<table class="table table-bordered table-striped">
-    <thead>
-        <tr>
-            <th>Cliente</th>
-            <th>Producto</th>
-            <th>Cantidad</th>
-            <th>Distancia (km)</th>
-            <th>Costo</th>
-            <th>Fecha</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var order in Model)
-        {
+@if (!Model.Any())
+{
+    <div class="alert alert-info">
+        No hay órdenes registradas aún.
+    </div>
+}
+else
+{
+    <table class="table table-bordered table-striped">
+        <thead>
             <tr>
-                <td>@order.ClientName</td>
-                <td>@order.ProductName</td>
-                <td>@order.Quantity</td>
-                <td>@order.DistanceKm</td>
-                <td>@order.Cost</td>
-                <td>@order.CreatedAt.ToString("dd/MM/yyyy HH:mm")</td>
+                <th>Cliente</th>
+                <th>Producto</th>
+                <th>Cantidad</th>
+                <th>Distancia (km)</th>
+                <th>Costo</th>
+                <th>Fecha</th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var order in Model)
+            {
+                <tr>
+                    <td>@order.ClientName</td>
+                    <td>@order.ProductName</td>
+                    <td>@order.Quantity</td>
+                    <td>@order.DistanceKm</td>
+                    <td>@order.Cost</td>
+                    <td>@order.CreatedAt.ToString("dd/MM/yyyy HH:mm")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}   

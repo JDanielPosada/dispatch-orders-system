@@ -5,9 +5,14 @@
 
 <div class="d-flex justify-content-between align-items-center mb-4">
     <h2 style="color: #033e5c;">Clientes</h2>
-    <a class="btn btn-primary" asp-action="Create" style="background-color: #033e5c; border-color: #033e5c;">
-        + Nuevo Cliente
-    </a>
+    <div class="d-flex gap-2">
+        <a href="@Url.Action("Index", "Home")" class="btn btn-outline-secondary">
+            <i class="bi bi-arrow-left-circle me-1"></i> Volver al inicio
+        </a>
+        <a class="btn btn-primary" asp-action="Create" style="background-color: #033e5c; border-color: #033e5c;">
+            + Nuevo Cliente
+        </a>
+    </div>
 </div>
 
 @if (!Model.Any())
