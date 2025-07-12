@@ -117,13 +117,10 @@ Puedes configurar como proyecto de inicio `DispatchOrderSystem.Api` y `DispatchO
 | GET    | `/api/orders/getAll` | Obtiene todas las ordenes registradas |
 | GET    | `/api/orders/report/client-distance` | Obtiene un reporte por cliente agrupado por distancias |
 | GET    | `/api/orders/report/client-distance/export` | Exporta el reporte por cliente y distancia a un archivo Excel |
-
 | POST 	 | `/api/Clients` | Crea un nuevo cliente |
 | GET 	 | `/api/Clients` | Obtiene todos los clientes registrados |
-
 | POST 	 | `/api/Products` | Crea un nuevo producto |
 | GET 	 | `/api/Products` | Obtiene todos los productos registrados |
-
 | POST 	 | `/api/SeedOrders` | Inserta clientes, prodcutos y ordenes de prueba en la base de datos |
 ---
 
@@ -216,6 +213,7 @@ El frontend de esta aplicación fue desarrollado utilizando **ASP.NET Core MVC**
 A continuación, se incluyen capturas de pantalla que muestran el flujo de creación de órdenes, visualización por cliente, el reporte con agrupación por distancia y el spinner en acción:
 
 - home
+<img width="1345" height="643" alt="image" src="https://github.com/user-attachments/assets/e59da376-1401-4b95-bb10-04aea8cc1d0d" />
 
 - Crear una Orden
 
