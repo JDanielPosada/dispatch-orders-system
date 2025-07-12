@@ -36,11 +36,21 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // Spinner en formularios
+    // Spinner in forms
     const forms = document.querySelectorAll("form");
     forms.forEach(form => {
-        form.addEventListener("submit", () => {
-            showSpinner();
+        forms.forEach(form => {
+            form.addEventListener("submit", (e) => {
+
+                const isValid = $(form).valid?.() ?? true;
+
+                if (!isValid) {
+                    e.preventDefault(); 
+                    return;
+                }
+
+                showSpinner();
+            });
         });
     });
 });

@@ -1,4 +1,4 @@
-﻿using DispatchOrderSystem.Web.Models;
+﻿using DispatchOrderSystem.Web.Models.Orders;
 using DispatchOrderSystem.Web.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
@@ -57,7 +57,7 @@ namespace DispatchOrderSystem.Web.Controllers
 
                 await _orderService.CreateOrderAsync(request);
                 TempData["SuccessMessage"] = "La orden fue creada exitosamente.";
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Orders");
             }
             catch (ApplicationException ex)
             {
@@ -69,5 +69,12 @@ namespace DispatchOrderSystem.Web.Controllers
             }
         }
         public IActionResult Success() => View();
+
+        [HttpGet]
+        public async Task<IActionResult> Index()
+        {
+            var orders = await _orderService.GetAllOrdersAsync();
+            return View(orders);
+        }
     }
 }

@@ -1,5 +1,5 @@
 ﻿using DispatchOrderSystem.Application.Queries.Orders;
-using DispatchOrderSystem.Application.Validators;
+using DispatchOrderSystem.Application.Validators.Orders;
 using FluentValidation.TestHelper;
 using Xunit;
 

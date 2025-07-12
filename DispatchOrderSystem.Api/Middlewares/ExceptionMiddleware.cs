@@ -47,14 +47,5 @@ namespace DispatchOrderSystem.Api.Middlewares
                 KeyNotFoundException => (int)HttpStatusCode.NotFound,
                 _ => (int)HttpStatusCode.InternalServerError
             };
-
-        private static string GetErrorMessage(Exception ex) =>
-            ex switch
-            {
-                ValidationException => "Validation failed.",
-                ArgumentException => ex.Message,
-                KeyNotFoundException => "Resource not found.",
-                _ => "An unexpected error occurred."
-            };
     }
 }

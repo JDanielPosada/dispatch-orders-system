@@ -1,10 +1,9 @@
 using DispatchOrderSystem.Api.Middlewares;
 using DispatchOrderSystem.Application;
 using DispatchOrderSystem.Application.Behaviors;
-using DispatchOrderSystem.Application.Validators;
+using DispatchOrderSystem.Application.Validators.Orders;
 using DispatchOrderSystem.Infrastructure.DependencyInjection;
 using FluentValidation;
-using FluentValidation.AspNetCore;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Serilog;
@@ -28,7 +27,8 @@ builder.Services.Configure<ApiBehaviorOptions>(options =>
     {
         var errors = context.ModelState
             .Where(e => e.Value?.Errors?.Count > 0)
-            .Select(e => new {
+            .Select(e => new
+            {
                 Field = e.Key,
                 Errors = e.Value?.Errors?.Select(err => err.ErrorMessage)
             });
@@ -69,7 +69,7 @@ builder.Host.UseSerilog();
 var app = builder.Build();
 
 // Configure middlewares
-if (app.Environment.IsDevelopment())
+if (app.Environment.IsDevelopment() || app.Environment.IsProduction())
 {
     app.UseSwagger();
     app.UseSwaggerUI(options =>

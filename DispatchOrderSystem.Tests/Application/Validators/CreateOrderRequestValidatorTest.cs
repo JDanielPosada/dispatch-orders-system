@@ -1,5 +1,5 @@
 ﻿using DispatchOrderSystem.Application.DTOs;
-using DispatchOrderSystem.Application.Validators;
+using DispatchOrderSystem.Application.Validators.Orders;
 using DispatchOrderSystem.Domain.Aggregates.Entities;
 using DispatchOrderSystem.Domain.Interfaces;
 using FluentValidation.TestHelper;

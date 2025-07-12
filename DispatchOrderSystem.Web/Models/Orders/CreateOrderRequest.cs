@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace DispatchOrderSystem.Web.Models
+namespace DispatchOrderSystem.Web.Models.Orders
 {
     /// <summary>
     /// Modelo para crear una orden desde el frontend.

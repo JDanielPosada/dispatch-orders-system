@@ -3,7 +3,7 @@ using DispatchOrderSystem.Application.Utils;
 using DispatchOrderSystem.Domain.Interfaces;
 using FluentValidation;
 
-namespace DispatchOrderSystem.Application.Validators
+namespace DispatchOrderSystem.Application.Validators.Orders
 {
     public class CreateOrderRequestValidator : AbstractValidator<CreateOrderRequest>
     {

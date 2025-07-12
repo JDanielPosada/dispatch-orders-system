@@ -1,7 +1,7 @@
 ﻿using DispatchOrderSystem.Application.Queries.Orders;
 using FluentValidation;
 
-namespace DispatchOrderSystem.Application.Validators
+namespace DispatchOrderSystem.Application.Validators.Orders
 {
     public class GetOrdersByClientIdQueryRequestValidator : AbstractValidator<GetOrdersByClientIdQueryRequest>
     {

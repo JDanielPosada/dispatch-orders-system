@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DispatchOrderSystem.Application.Validators
+namespace DispatchOrderSystem.Application.Validators.Orders
 {
     public class DeleteOrderCommandRequestValidator : AbstractValidator<DeleteOrderCommandRequest>
     {

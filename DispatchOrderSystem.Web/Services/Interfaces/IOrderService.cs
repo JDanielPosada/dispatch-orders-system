@@ -1,4 +1,4 @@
-﻿using DispatchOrderSystem.Web.Models;
+﻿using DispatchOrderSystem.Web.Models.Orders;
 
 namespace DispatchOrderSystem.Web.Services.Interfaces
 {
@@ -6,5 +6,7 @@ namespace DispatchOrderSystem.Web.Services.Interfaces
     {
         Task<IEnumerable<OrderResponse>> GetOrdersByClientIdAsync(Guid clientId);
         Task CreateOrderAsync(CreateOrderRequest request);
+
+        Task<List<OrderResponse>> GetAllOrdersAsync();
     }
 }

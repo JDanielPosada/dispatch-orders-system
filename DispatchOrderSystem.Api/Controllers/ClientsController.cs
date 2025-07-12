@@ -5,6 +5,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace DispatchOrderSystem.Api.Controllers
 {
+    /// <summary>
+    /// Controlador para gestionar clientes.
+    /// </summary>
     [ApiController]
     [Route("api/[controller]")]
     public class ClientsController : ControllerBase
@@ -16,6 +19,14 @@ namespace DispatchOrderSystem.Api.Controllers
             _mediator = mediator;
         }
 
+        /// <summary>
+        /// Crea un nuevo cliente.
+        /// </summary>
+        /// <param name="request">Datos del cliente a crear.</param>
+        /// <returns>ID del cliente creado.</returns>
+        /// <response code="201">Cliente creado exitosamente</response>
+        /// <response code="400">Datos inválidos</response>
+        /// <response code="500">Error inesperado</response>
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] CreateClientCommandRequest request)
         {
@@ -23,6 +34,12 @@ namespace DispatchOrderSystem.Api.Controllers
             return CreatedAtAction(nameof(GetAll), new { id }, new { id });
         }
 
+        /// <summary>
+        /// Obtiene todos los clientes registrados.
+        /// </summary>
+        /// <returns>Lista de clientes.</returns>
+        /// <response code="200">Lista obtenida correctamente</response>
+        /// <response code="500">Error inesperado</response>
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {

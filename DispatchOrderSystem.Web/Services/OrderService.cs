@@ -1,5 +1,6 @@
-﻿using DispatchOrderSystem.Web.Models;
+﻿using DispatchOrderSystem.Web.Models.Orders;
 using DispatchOrderSystem.Web.Services.Interfaces;
+using System.Net.Http;
 
 namespace DispatchOrderSystem.Web.Services
 {
@@ -37,6 +38,12 @@ namespace DispatchOrderSystem.Web.Services
             {
                 throw new ApplicationException("Error al crear la orden. Intenta nuevamente.", ex);
             }
+        }
+
+        public async Task<List<OrderResponse>> GetAllOrdersAsync()
+        {
+            var response = await _http.GetFromJsonAsync<List<OrderResponse>>("api/orders/getAll");
+            return response ?? new List<OrderResponse>();
         }
     }
 }

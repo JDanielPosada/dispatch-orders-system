@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DispatchOrderSystem.Application.DTOs
+﻿namespace DispatchOrderSystem.Application.DTOs
 {
     /// <summary>
     /// Representa la solicitud para crear una nueva orden de despacho.

@@ -19,7 +19,10 @@
         <span asp-validation-for="Description" class="text-danger"></span>
     </div>
 
-    <button type="submit" class="btn btn-primary" style="background-color: #033e5c;">Guardar</button>
+    <div class="d-flex justify-content-end d-flex gap-2">
+        <a asp-action="Index" class="btn btn-outline-secondary ms-2">Cancelar</a>
+        <button type="submit" class="btn btn-primary" style="background-color: #033e5c;">Guardar</button>
+    </div>
 </form>
 
 @section Scripts {
