@@ -212,35 +212,35 @@ El frontend de esta aplicación fue desarrollado utilizando **ASP.NET Core MVC**
 
 A continuación, se incluyen capturas de pantalla que muestran el flujo de creación de órdenes, visualización por cliente, el reporte con agrupación por distancia y el spinner en acción:
 
-![home](<img width="1345" height="643" alt="image" src="https://github.com/user-attachments/assets/e59da376-1401-4b95-bb10-04aea8cc1d0d" />)
-
-- home
+- **home**
 <img width="1345" height="643" alt="image" src="https://github.com/user-attachments/assets/e59da376-1401-4b95-bb10-04aea8cc1d0d" />
 
-- Crear una Orden
+- **Crear una Orden**
 <img width="1910" height="915" alt="image" src="https://github.com/user-attachments/assets/35087104-3aa6-4124-95bf-23953e8f517f" />
 
-- Visualización de todas las ordenes
+- **Visualización de todas las ordenes**
 <img width="1894" height="718" alt="image" src="https://github.com/user-attachments/assets/781a336b-1e23-462e-a09c-b1097e2808ec" />
 
-- Reporte por Cliente y distancia
+- **Reporte por Cliente y distancia**
 <img width="1913" height="912" alt="image" src="https://github.com/user-attachments/assets/eb64137c-2b3d-47da-96bc-a6d39b9b5738" />
 
-- Visualización de Excel
+- **Visualización de Excel**
 <img width="781" height="394" alt="image" src="https://github.com/user-attachments/assets/5a12f1ad-cb99-4e12-889d-7912d37c557f" />
 
-- Visualización de clientes
+- **Visualización de clientes**
 <img width="1905" height="921" alt="image" src="https://github.com/user-attachments/assets/2544971a-8b2c-4622-b4f6-1b31d9b84ddf" />
 
-- Crear un nuevo cliente
+- **Crear un nuevo cliente**
 <img width="1911" height="920" alt="image" src="https://github.com/user-attachments/assets/06c56129-9328-4454-a1ee-85e305537346" />
 
-- Visualización de productos
+- **Visualización de productos**
 <img width="1909" height="908" alt="image" src="https://github.com/user-attachments/assets/bc04486d-50f5-463f-bb4a-5e2000c8e380" />
 
-- Crear un nuevo producto
+- **Crear un nuevo producto**
 <img width="1909" height="920" alt="image" src="https://github.com/user-attachments/assets/3f031b97-d52b-4234-9b94-76b12ae33216" />
 
+## 📌 Consideraciones
+Por simplicidad y optimización de tiempos, el modelo de cliente solo cuenta con un campo: nombre.
 
 ## 🧑‍💻 Autor
 
