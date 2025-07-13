@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DispatchOrderSystem.Infrastructure")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+acf2e5f2d293456676863f5e528fb991c815f1b7")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5fb78fb2a3caa1bbc6ef23d1231fb4e96c8a3478")]
 [assembly: System.Reflection.AssemblyProductAttribute("DispatchOrderSystem.Infrastructure")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DispatchOrderSystem.Infrastructure")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

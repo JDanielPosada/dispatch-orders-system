@@ -59,6 +59,19 @@
                             </div>
                         </div>
 
+                        <div class="card shadow-sm mb-4">
+                            <div class="card-header bg-light text-dark fw-bold">
+                                Selección en Mapa
+                            </div>
+                            <div class="card-body p-3">
+                                <p class="text-muted mb-2">
+                                    Da clic en el mapa para establecer el origen y el destino de la orden.
+                                </p>
+                                <div id="map"
+                                     style="height: 300px; border-radius: 10px; overflow: hidden; border: 1px solid #ccc;"></div>
+                            </div>
+                        </div>
+
                         <div class="d-flex justify-content-end d-flex gap-2">
                             <a asp-action="Index" class="btn btn-outline-secondary ms-2">Cancelar</a>
                             <button type="submit" class="btn text-white" style="background-color: #033e5c;">Crear Orden</button>
@@ -93,4 +106,69 @@
             });
         });
     </script>
+
+    <script>
+        let map = L.map('map').setView([2.4448, -76.6147], 7); // Centrado en Popayán
+
+        // Capa base
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+        attribution: '&copy; <a href="https://carto.com/">CARTO</a>',
+        }).addTo(map);
+
+        let originMarker = null;
+        let destinationMarker = null;
+
+        // Evento clic
+        let step = 1;
+
+        map.on('click', function (e) {
+            const { lat, lng } = e.latlng;
+
+            if (step === 1) {
+                if (originMarker) map.removeLayer(originMarker);
+                originMarker = L.marker([lat, lng], { draggable: true }).addTo(map)
+                    .bindPopup('Origen').openPopup();
+                $('#OriginLatitude').val(lat.toFixed(6));
+                $('#OriginLongitude').val(lng.toFixed(6));
+                step = 2;
+
+                originMarker.on('dragend', function (e) {
+                    const pos = e.target.getLatLng();
+                    $('#OriginLatitude').val(pos.lat.toFixed(6));
+                    $('#OriginLongitude').val(pos.lng.toFixed(6));
+                });
+
+            } else if (step === 2) {
+                if (destinationMarker) map.removeLayer(destinationMarker);
+                destinationMarker = L.marker([lat, lng], { draggable: true, icon: L.icon({
+                    iconUrl: 'https://cdn-icons-png.flaticon.com/512/684/684908.png',
+                    iconSize: [25, 41],
+                    iconAnchor: [12, 41],
+                    popupAnchor: [1, -34],
+                }) }).addTo(map).bindPopup('Destino').openPopup();
+                $('#DestinationLatitude').val(lat.toFixed(6));
+                $('#DestinationLongitude').val(lng.toFixed(6));
+                step = 1;
+
+                destinationMarker.on('dragend', function (e) {
+                    const pos = e.target.getLatLng();
+                    $('#DestinationLatitude').val(pos.lat.toFixed(6));
+                    $('#DestinationLongitude').val(pos.lng.toFixed(6));
+                });
+            }
+        });
+    </script>
 }
+<style>
+    #map {
+        transition: box-shadow 0.3s ease;
+    }
+
+        #map:hover {
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        }
+
+    .leaflet-control-container .leaflet-control-attribution {
+        font-size: 0.75rem;
+    }
+</style>
